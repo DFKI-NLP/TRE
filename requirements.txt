@@ -8,3 +8,5 @@ numpy
 pyyaml
 tqdm
 pandas
+regex==2017.4.5
+dill
