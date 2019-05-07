@@ -1,7 +1,8 @@
 # Improving Relation Extraction by Pre-trained Language Representations
 
 This repository contains the code of our paper:  
-[Improving Relation Extraction by Pre-trained Language Representations.](https://openreview.net/forum?id=BJgrxbqp67) Christoph Alt*, Marc Hübner*, Leonhard Hennig
+[Improving Relation Extraction by Pre-trained Language Representations.](https://openreview.net/forum?id=BJgrxbqp67)  
+Christoph Alt*, Marc Hübner*, Leonhard Hennig
 
 We fine-tune the pre-trained OpenAI GPT [1] to the task of relation extraction and show that it achieves state-of-the-art results on SemEval 2010 Task 8 and TACRED relation extraction datasets.
 
@@ -65,6 +66,48 @@ CUDA_VISIBLE_DEVICES=0 python relation_extraction.py evaluate \
   --model_file <MODEL FILE (e.g. model_epoch...)> \
   --batch_size 8 \
   --log_dir ./logs/
+```
+
+## Trained Models
+
+The models we trained on SemEval and TACRED to produce our paper results can be found here:
+
+| Dataset  | Masking Mode    | P    | R    | F1   | Download                                                                    |
+| -------- | --------------- | ---- | ---- | ---- | --------------------------------------------------------------------------- |
+| TACRED   | grammar_and_ner | 70.0 | 65.0 | 67.4 | [Link](https://cloud.dfki.de/owncloud/index.php/s/SoFBHxgRBRNEA3C/download) |
+| SemEval  | None            | 87.6 | 86.8 | 87.1 | [Link](https://cloud.dfki.de/owncloud/index.php/s/Q7F6AYEWyysLwH4/download) |
+
+### Download and extract model files
+
+First, download the archive corresponding to the model you want to evaluate (links in the table above).
+
+```bash
+wget --content-disposition <DOWNLOAD URL>
+```
+
+Extract the model archive containing model.pt, text_encoder.pkl, and label_encoder.pkl.
+
+```bash
+tar -xvzf <MODEL ARCHIVE>
+```
+
+### Run evaluation
+
+- `dataset`: dataset to evaluate, can be one of "semeval" or "tacred".
+- `test-file`: path to the JSONL test file used during evaluation
+- `log-dir`: directory to store the evaluation results and predictions
+- `save-dir`: directory containing the downloaded model files (model.pt, text_encoder.pkl, and label_encoder.pkl)
+- `masking-mode`: masking mode to use during evaluation, can be one of "None", "grammar_and_ner", "grammar", "ner" or "unk" (**caution:** must match the mode for training)
+
+For example, to evaluate the TACRED model with "grammar_and_ner" masking, run the following command:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python relation_extraction.py evaluate \
+      --dataset tacred \
+      --test-file ./<CONVERTED DATASET DIR>/test.jsonl \
+      --log-dir <RESULTS DIR> \
+      --save-dir <MODEL DIR> \
+      --masking_mode grammar_and_ner
 ```
 
 ## Citations
