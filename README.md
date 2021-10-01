@@ -74,8 +74,8 @@ The models we trained on SemEval and TACRED to produce our paper results can be 
 
 | Dataset  | Masking Mode    | P    | R    | F1   | Download                                                                    |
 | -------- | --------------- | ---- | ---- | ---- | --------------------------------------------------------------------------- |
-| TACRED   | grammar_and_ner | 70.0 | 65.0 | 67.4 | [Link](https://cloud.dfki.de/owncloud/index.php/s/SoFBHxgRBRNEA3C/download) |
-| SemEval  | None            | 87.6 | 86.8 | 87.1 | [Link](https://cloud.dfki.de/owncloud/index.php/s/Q7F6AYEWyysLwH4/download) |
+| TACRED   | grammar_and_ner | 70.0 | 65.0 | 67.4 | [Link](https://dfkide-my.sharepoint.com/:u:/g/personal/lehe02_dfki_de/EQ0zv4QicbVMoW6nBhnOkA8BV4Yzt7agM0hAfX07VQez4w?Web=0&Download=1) |
+| SemEval  | None            | 87.6 | 86.8 | 87.1 | [Link](https://dfkide-my.sharepoint.com/:u:/g/personal/lehe02_dfki_de/EZBQNU99Uz9MiOuP-RHAdaYB7w8jIW0mADM4f05tGbhwZg?Web=0&Download=1) |
 
 ### Download and extract model files
 
